@@ -1,20 +1,32 @@
-var gulp = require('gulp'),
+'use strict';
+
+let gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
-  sass = require('gulp-ruby-sass');
+  sass = require('gulp-sass'),
+  autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('sass', function () {
-  return sass('./public/css/**/*.scss')
-    .pipe(gulp.dest('./public/css'))
+gulp.task('models', () => {
+  gulp.src('./raw/models/**/*')
+    .pipe(gulp.dest('./public/models/'))
     .pipe(livereload());
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./public/css/*.scss', ['sass']);
+gulp.task('sass', () => {
+  gulp.src('./raw/scss/**/*.scss')
+  .pipe(sass())
+  .pipe(autoprefixer('last 2 version'))
+  .pipe(gulp.dest('./public/css'))
+  .pipe(livereload());
 });
 
-gulp.task('develop', function () {
+gulp.task('watch', () => {
+  gulp.watch('./raw/models/**/*', ['models']);
+  gulp.watch('./raw/scss/*.scss', ['sass']);
+});
+
+gulp.task('develop', () => {
   livereload.listen();
   nodemon({
     script: 'bin/www',
@@ -32,7 +44,8 @@ gulp.task('develop', function () {
 });
 
 gulp.task('default', [
+  'models',
   'sass',
   'develop',
   'watch'
-]);
+  ]);

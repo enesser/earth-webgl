@@ -1,7 +1,8 @@
 {
   "name": "earth-webgl",
   "version": "0.0.1",
-  "private": true,
+  "description": "Photorealistic 3D earth and space scene demo rendered and animated in WebGL.",
+  "private": false,
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -15,9 +16,22 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-ruby-sass": "^2.0.1",
-    "gulp-nodemon": "^2.0.2",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-livereload": "^3.8.0",
-    "gulp-plumber": "^1.0.0"
-  }
+    "gulp-nodemon": "^2.0.2",
+    "gulp-plumber": "^1.0.0",
+    "gulp-sass": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+  ],
+  "author": "Eric J Nesser",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
 }
