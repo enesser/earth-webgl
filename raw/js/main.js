@@ -17,7 +17,7 @@ init();
 animate();
 
 var Settings = function() {
-  this.cameraX = 6;
+  this.cameraX = 5.25;
   this.cameraY = 0;
   this.cameraZ = 0;
   this.lightX = -1;
