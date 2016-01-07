@@ -53,10 +53,12 @@ function init() {
                 scene = new THREE.Scene();
 
                 camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-                camera.position.z = 100;
+                //camera.position.z = 100;
 
 
-                var ambient = new THREE.AmbientLight(0x444444);
+                //var ambient = new THREE.AmbientLight(0x444444);
+                var ambient = new THREE.AmbientLight(0x555555);
+                //var ambient = new THREE.AmbientLight(0xFFFFFF);
                 scene.add(ambient);
 
                 directionalLight = new THREE.DirectionalLight(0xffeedd);
@@ -160,13 +162,19 @@ function init() {
                     obj.position.z = 0;
 
 
+                    obj.children[0].children[1].material.opacity = 0.3;
                     obj.children[0].children[1].material.depthWrite = false; //fix atmospehre
-                    obj.children[1].children[1].material.opacity = .4; //fix clouds
+                    obj.children[1].children[1].material.opacity = 0.6; //fix clouds
+                    obj.children[1].children[1].material.blending = THREE.AdditiveBlending;
+                    obj.children[1].children[1].material.shininess = 0; //fix clouds
+                    obj.children[1].castShadow = true;
+                    obj.children[2].receiveShadow = true;
+                    obj.children[2].children[1].material.bumpScale = 0.1;
 
 
                     //obj.children[0].visible = false;
-                    obj.children[1].rotation.y -= 0.004;
-                    obj.children[2].rotation.y -= 0.001;
+                    obj.children[1].rotation.y += 0.002;
+                    obj.children[2].rotation.y += 0.001;
                 }
 
 
