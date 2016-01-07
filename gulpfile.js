@@ -21,9 +21,16 @@ gulp.task('sass', () => {
   .pipe(livereload());
 });
 
+gulp.task('js', () => {
+  gulp.src('./raw/js/**/*.js')
+  .pipe(gulp.dest('./public/js'))
+  .pipe(livereload());
+});
+
 gulp.task('watch', () => {
   gulp.watch('./raw/models/**/*', ['models']);
-  gulp.watch('./raw/scss/*.scss', ['sass']);
+  gulp.watch('./raw/scss/**/*', ['sass']);
+  gulp.watch('./raw/js/**/*', ['js']);
 });
 
 gulp.task('develop', () => {
@@ -46,6 +53,7 @@ gulp.task('develop', () => {
 gulp.task('default', [
   'models',
   'sass',
+  'js',
   'develop',
   'watch'
   ]);
