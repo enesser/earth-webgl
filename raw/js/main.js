@@ -52,7 +52,7 @@ function init() {
 
                 scene = new THREE.Scene();
 
-                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
                 //camera.position.z = 100;
 
 
@@ -121,10 +121,35 @@ function init() {
 
             }
 
+
+        var stars = new THREE.Geometry();
+    for (var i=0; i<10000; i++) {
+      stars.vertices.push(new THREE.Vector3(
+        //1e3 * Math.random() - 5e2,
+        //1e3 * Math.random() - 5e2,
+        //-1e2
+        //1e3 * Math.random() - 5e2,
+        //1e3 * Math.random() - 5e2,
+        //-1e2
+        //
+        Math.random() * 2000 - 1000,
+        Math.random() * 2000 - 1000,
+        Math.random() * 2000 - 1000
+      ));
+    }
+
+    var star_stuff = new THREE.PointsMaterial();
+    star_stuff.sizeAttenuation = false;
+    var star_system = new THREE.Points(stars, star_stuff);
+    scene.add(star_system);
+
             function onDocumentMouseMove(event) {
 
+                if (event.buttons) {
                 mouseX = (event.clientX - windowHalfX) / 2;
                 mouseY = (event.clientY - windowHalfY) / 2;
+            }
+
 
             }
 
@@ -152,14 +177,18 @@ function init() {
             }
             }
 
+                    camera.position.x += ( mouseX - camera.position.x ) * 0.005;
+        camera.position.y += ( - mouseY - camera.position.y ) * 0.005;
+        camera.lookAt( scene.position );
+
 
                 if (obj) {
 
-                    obj.position.set(0, 0, -100);
+                    //obj.position.set(0, 0, -100);
 
-                    obj.position.x = 0;
-                    obj.position.y = 0;
-                    obj.position.z = 0;
+                    //obj.position.x = 0;
+                    //obj.position.y = 0;
+                    //obj.position.z = 0;
 
 
                     obj.children[0].children[1].material.opacity = 0.3;
@@ -169,7 +198,7 @@ function init() {
                     obj.children[1].children[1].material.shininess = 0; //fix clouds
                     obj.children[1].castShadow = true;
                     obj.children[2].receiveShadow = true;
-                    obj.children[2].children[1].material.bumpScale = 0.1;
+                    obj.children[2].children[1].material.bumpScale = 0.04;
 
 
                     //obj.children[0].visible = false;
@@ -179,7 +208,7 @@ function init() {
 
 
                 if (obj) {
-                    camera.lookAt(obj.position);
+                    //camera.lookAt(obj.position);
                 }
 
                 renderer.render(scene, camera);

@@ -1,20 +1,26 @@
 'use strict';
 
-let gulp = require('gulp'),
+require("babel-register");
+
+const gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
+  gulpif = require('gulp-if'),
+  babel = require('gulp-babel'),
+  uglify = require('gulp-uglify'),
+  sourcemaps = require('gulp-sourcemaps'),
   livereload = require('gulp-livereload'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('models', () => {
-  gulp.src('./raw/models/**/*')
+  return gulp.src('./raw/models/**/*')
     .pipe(gulp.dest('./public/models/'))
     .pipe(livereload());
 });
 
 gulp.task('sass', () => {
-  gulp.src('./raw/scss/**/*.scss')
+  return gulp.src('./raw/scss/**/*.scss')
   .pipe(sass())
   .pipe(autoprefixer('last 2 version'))
   .pipe(gulp.dest('./public/css'))
@@ -22,7 +28,11 @@ gulp.task('sass', () => {
 });
 
 gulp.task('js', () => {
-  gulp.src('./raw/js/**/*.js')
+  return gulp.src('./raw/js/**/*.js')
+  .pipe(sourcemaps.init())
+  .pipe(gulpif(['./raw/**/*.js', '!./raw/vendor/**/*.js'], babel()))
+  .pipe(uglify())
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('./public/js'))
   .pipe(livereload());
 });
