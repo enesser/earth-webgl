@@ -195,7 +195,19 @@ function init() {
                     obj.children[0].children[1].material.depthWrite = false; //fix atmospehre
                     obj.children[1].children[1].material.opacity = 0.6; //fix clouds
                     obj.children[1].children[1].material.blending = THREE.AdditiveBlending;
+
+
                     obj.children[1].children[1].material.shininess = 0; //fix clouds
+                    obj.children[2].children[1].material.shininess = 0; //fix clouds
+                    obj.children[0].children[1].material.shininess = 0; //fix clouds
+
+
+                    obj.children[1].children[0].material.shininess = 0; //fix clouds
+                    obj.children[2].children[0].material.shininess = 0; //fix clouds
+                    obj.children[0].children[0].material.shininess = 0; //fix clouds
+
+
+
                     obj.children[1].castShadow = true;
                     obj.children[2].receiveShadow = true;
                     obj.children[2].children[1].material.bumpScale = 0.04;
