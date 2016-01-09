@@ -77,9 +77,39 @@ function init() {
 
                 var onError = function(xhr) {};
 
+                const pathEarthModelLow = 'models/earth/low/earth.obj';
+                const pathEarthModelHigh = 'models/earth/high/earth.obj';
+                const pathEarthModelMaterialLow = 'models/earth/low/earth.mtl';
+                const pathEarthModelMaterialHigh = 'models/earth/high/earth.mtl';
+
+                let earthPath = '';
+                let earthMaterialPath = '';
+
+
+                function getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split('=');
+                        if (decodeURIComponent(pair[0]) == variable) {
+                            return decodeURIComponent(pair[1]);
+                        }
+                    }
+                }
+
+
+                let quality = getQueryVariable('quality') === 'low' ? 'low' : 'high';
+
+                if (quality === 'low') {
+                    earthPath = pathEarthModelLow;
+                    earthMaterialPath = pathEarthModelMaterialLow;
+                } else {
+                    earthPath = pathEarthModelHigh;
+                    earthMaterialPath = pathEarthModelMaterialHigh;
+                }
 
                 var loader = new THREE.OBJMTLLoader();
-                loader.load('models/earth/earth.obj', 'models/earth/earth.mtl', function(object) {
+                loader.load(earthPath, earthMaterialPath, function(object) {
 
                     console.dir(object);
                     obj = object;

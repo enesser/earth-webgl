@@ -31,7 +31,7 @@ gulp.task('js', () => {
   return gulp.src('./raw/js/**/*.js')
   .pipe(sourcemaps.init())
   .pipe(gulpif(['./raw/**/*.js', '!./raw/vendor/**/*.js'], babel()))
-  .pipe(uglify())
+  //.pipe(uglify())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('./public/js'))
   .pipe(livereload());
