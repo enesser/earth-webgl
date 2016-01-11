@@ -1,6 +1,21 @@
 'use strict';
 
-var container, stats;
+/* global window, console, THREE: true */
+
+((window) => {
+    //window.onload = ()=> {
+      //  console.log('test...');
+
+    //};
+})();
+
+
+
+window.onload = () => {
+
+let settings = EarthWebGLDemo.settings();
+
+var container;
 
 var camera, scene, renderer;
 
@@ -16,30 +31,11 @@ var obj = null;
 init();
 animate();
 
-var Settings = function() {
-  this.cameraX = 5.25;
-  this.cameraY = 0;
-  this.cameraZ = 0;
-  this.lightX = -1;
-  this.lightY = 1;
-  this.lightZ = -10;
-  this.lightIntensity = 4.0;
-};
-
-var settings = new Settings();
-
-window.onload = function() {
-  var gui = new dat.GUI();
-  gui.add(settings, 'cameraX');
-  gui.add(settings, 'cameraY');
-  gui.add(settings, 'cameraZ');
-  gui.add(settings, 'lightX');
-  gui.add(settings, 'lightY');
-  gui.add(settings, 'lightZ');
-  gui.add(settings, 'lightIntensity');
-};
-
 var directionalLight;
+var directionalLightColor;
+var ambientLightColor;
+var ambientLight; 
+var atmosphereColor;
 
 
 function init() {
@@ -57,14 +53,18 @@ function init() {
 
 
                 //var ambient = new THREE.AmbientLight(0x444444);
-                var ambient = new THREE.AmbientLight(0x555555);
+                ambientLightColor = new THREE.Color();
+                ambientLight = new THREE.AmbientLight(ambientLightColor);
                 //var ambient = new THREE.AmbientLight(0xFFFFFF);
-                scene.add(ambient);
+                scene.add(ambientLight);
 
-                directionalLight = new THREE.DirectionalLight(0xffeedd);
+                directionalLightColor = new THREE.Color();
+                directionalLight = new THREE.DirectionalLight(directionalLightColor);
                 directionalLight.castShadow = true;
                 //directionalLight.position.set(-200, 10, 10).normalize();
                 scene.add(directionalLight);
+
+                atmosphereColor = new THREE.Color();
 
                 // model
 
@@ -192,16 +192,19 @@ function init() {
 
             }
 
-            var rotation = 0;
-
             function render() {
 
+                directionalLightColor.setStyle(settings.sunColor);
+                directionalLight.color = directionalLightColor;
+
+                ambientLightColor.setStyle(settings.ambientLight);
+                ambientLight.color = ambientLightColor;
+
                 if (settings) {
-                camera.position.set(settings.cameraX, settings.cameraY, settings.cameraZ);
+                camera.position.set(5.25, 0, 0);
 
-
-                directionalLight.position.set(settings.lightX, settings.lightY, settings.lightZ);
-                directionalLight.intensity = settings.lightIntensity;
+                directionalLight.position.set(-1, 1, -10);
+                directionalLight.intensity = settings.sunIntensity;
 
                 if (obj) {
             }
@@ -219,13 +222,24 @@ function init() {
                     //obj.position.x = 0;
                     //obj.position.y = 0;
                     //obj.position.z = 0;
+                    //
+                    //
+
+                    atmosphereColor.setStyle(settings.atmosphereColor);
+                    obj.children[0].visible = settings.atmosphereVisible;
+                    obj.children[0].children[1].material.color = atmosphereColor; 
+                    obj.children[0].children[1].material.wireframe = settings.atmosphereWireframe;
 
 
-                    obj.children[0].children[1].material.opacity = 0.3;
+                    obj.children[0].children[1].material.opacity = settings.atmosphereOpacity;
                     obj.children[0].children[1].material.depthWrite = false; //fix atmospehre
-                    obj.children[1].children[1].material.opacity = 0.6; //fix clouds
+                    obj.children[1].children[1].material.opacity = settings.cloudsOpacity; //fix clouds
                     //obj.children[1].children[1].material.opacity = 1; //fix clouds
                     obj.children[1].children[1].material.blending = THREE.AdditiveBlending;
+
+                    obj.children[1].children[1].material.wireframe = settings.cloudsWireframe;
+
+                    obj.children[1].children[1].material.visible = settings.cloudsVisible;
 
 
                     obj.children[1].children[1].material.shininess = 0; //fix clouds
@@ -241,12 +255,19 @@ function init() {
 
                     obj.children[1].castShadow = true;
                     obj.children[2].receiveShadow = true;
-                    obj.children[2].children[1].material.bumpScale = 0.04;
-
+                    obj.children[2].visible = settings.terrainVisible;
+                    obj.children[2].children[1].material.bumpScale = settings.terrainBumpScale;
+                    obj.children[2].children[1].material.wireframe = settings.terrainWireframe;
 
                     //obj.children[0].visible = false;
-                    obj.children[1].rotation.y += 0.002;
-                    obj.children[2].rotation.y += 0.001;
+                    //
+                    if (settings.cloudsRotate) {
+                        obj.children[1].rotation.y += settings.cloudsVelocity;
+                    }
+
+                    if (settings.terrainRotate) {
+                        obj.children[2].rotation.y += settings.terrainVelocity;
+                    }
                 }
 
 
@@ -258,3 +279,6 @@ function init() {
 
 
             }
+
+
+        };

@@ -1,13 +1,14 @@
 'use strict';
 
-require("babel-register");
+/* global require, process, __dirname: true */
+
+require('babel-register');
 
 const gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
-  plumber = require('gulp-plumber'),
   gulpif = require('gulp-if'),
   babel = require('gulp-babel'),
-  uglify = require('gulp-uglify'),
+  //uglify = require('gulp-uglify'),
   sourcemaps = require('gulp-sourcemaps'),
   livereload = require('gulp-livereload'),
   sass = require('gulp-sass'),
@@ -40,7 +41,7 @@ gulp.task('js', () => {
 gulp.task('watch', () => {
   gulp.watch('./raw/models/**/*', ['models']);
   gulp.watch('./raw/scss/**/*', ['sass']);
-  gulp.watch('./raw/js/**/*', ['js']);
+  gulp.watch('./raw/js/**/*.js', ['js']);
 });
 
 gulp.task('develop', () => {
