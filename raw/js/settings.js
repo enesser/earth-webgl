@@ -45,7 +45,7 @@ EarthWebGLDemo.settings = function() {
          * Atmosphere opacity
          * @type {Number}
          */
-        atmopshereOpacity = 0.3,
+        atmopshereOpacity = 0.22,
 
         /**
          * Show atmosphere wireframe
@@ -63,7 +63,7 @@ EarthWebGLDemo.settings = function() {
          * Clouds opacity
          * @type {Number}
          */
-        cloudsOpacity = 0.6,
+        cloudsOpacity = 0.7,
 
         /**
          * Show clouds wireframe
@@ -117,7 +117,9 @@ EarthWebGLDemo.settings = function() {
     let gui = null;
 
     if (showUi) {
-        gui = new dat.GUI({ width: 360 });
+        gui = new dat.GUI({
+            width: 360
+        });
         gui.close();
     }
 
