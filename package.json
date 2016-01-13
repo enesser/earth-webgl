@@ -31,7 +31,7 @@
     "type": "git",
     "url": ""
   },
-  "keywords": [],
+  "keywords": ["WebGL", "Earth", "3D", "modeling"],
   "author": "Eric J Nesser",
   "license": "MIT",
   "bugs": {
