@@ -101,101 +101,82 @@ window.onload = () => {
 
     }
 
+    let stars = EarthWebGLDemo.starField().stars;
+    scene.add(stars);
 
-    var stars = new THREE.Geometry();
-    for (var i = 0; i < 10000; i++) {
-        stars.vertices.push(new THREE.Vector3(
-            //1e3 * Math.random() - 5e2,
-            //1e3 * Math.random() - 5e2,
-            //-1e2
-            //1e3 * Math.random() - 5e2,
-            //1e3 * Math.random() - 5e2,
-            //-1e2
-            //
-            Math.random() * 2000 - 1000,
-            Math.random() * 2000 - 1000,
-            Math.random() * 2000 - 1000
-        ));
-    }
+        function onDocumentMouseMove(event) {
 
-    var star_stuff = new THREE.PointsMaterial();
-    star_stuff.sizeAttenuation = false;
-    var star_system = new THREE.Points(stars, star_stuff);
-    scene.add(star_system);
-
-    function onDocumentMouseMove(event) {
-
-        if (event.buttons) {
-            mouseX = (event.clientX - windowHalfX) / 2;
-            mouseY = (event.clientY - windowHalfY) / 2;
-        }
-
-
-    }
-
-    //
-
-    function animate() {
-
-        requestAnimationFrame(animate);
-        render();
-
-    }
-
-    function render() {
-
-        if (earth.isLoaded && !earth.isAddedToScene) {
-            scene.add(earth.meshGroup);
-        }
-
-        directionalLightColor.setStyle(settings.sunColor);
-        directionalLight.color = directionalLightColor;
-
-        ambientLightColor.setStyle(settings.ambientLight);
-        ambientLight.color = ambientLightColor;
-
-        if (settings) {
-            camera.position.set(5.25, 0, 0);
-
-            directionalLight.position.set(-1, 1, -10);
-            directionalLight.intensity = settings.sunIntensity;
-
-            if (earth.isLoaded) {
-
-                atmosphereColor.setStyle(settings.atmosphereColor);
-
-                earth.atmosphereMesh.visible = settings.atmosphereVisible;
-                earth.atmosphereMaterial.color = atmosphereColor;
-                earth.atmosphereMaterial.opacity = settings.atmosphereOpacity;
-                earth.atmosphereMaterial.wireframe = settings.atmosphereWireframe;
-
-                earth.cloudsMesh.visible = settings.cloudsVisible;
-                earth.cloudsMaterial.opacity = settings.cloudsOpacity;
-                earth.cloudsMaterial.wireframe = settings.cloudsWireframe;
-
-                earth.terrainMesh.visible = settings.terrainVisible;
-                earth.terrainMaterial.bumpScale = settings.terrainBumpScale;
-                earth.terrainMaterial.wireframe = settings.terrainWireframe;
-
-                if (settings.cloudsRotate) {
-                    earth.cloudsMesh.rotation.y += settings.cloudsVelocity;
-                }
-
-                if (settings.terrainRotate) {
-                    earth.terrainMesh.rotation.y += settings.terrainVelocity;
-                }
-
-                if (!earth.isAddedToScene) {
-                    scene.add(earth.meshGroup);
-                    earth.isAddedToScene = true;
-                }
+            if (event.buttons) {
+                mouseX = (event.clientX - windowHalfX) / 2;
+                mouseY = (event.clientY - windowHalfY) / 2;
             }
 
+
         }
 
-        camera.position.x += (mouseX - camera.position.x) * 0.005;
-        camera.position.y += (-mouseY - camera.position.y) * 0.005;
-        camera.lookAt(scene.position);
-        renderer.render(scene, camera);
-    }
-};
+        //
+
+        function animate() {
+
+            requestAnimationFrame(animate);
+            render();
+
+        }
+
+        function render() {
+
+            if (earth.isLoaded && !earth.isAddedToScene) {
+                scene.add(earth.meshGroup);
+            }
+
+            directionalLightColor.setStyle(settings.sunColor);
+            directionalLight.color = directionalLightColor;
+
+            ambientLightColor.setStyle(settings.ambientLight);
+            ambientLight.color = ambientLightColor;
+
+            if (settings) {
+                camera.position.set(5.25, 0, 0);
+
+                directionalLight.position.set(-1, 1, -10);
+                directionalLight.intensity = settings.sunIntensity;
+
+                if (earth.isLoaded) {
+
+                    atmosphereColor.setStyle(settings.atmosphereColor);
+
+                    earth.atmosphereMesh.visible = settings.atmosphereVisible;
+                    earth.atmosphereMaterial.color = atmosphereColor;
+                    earth.atmosphereMaterial.opacity = settings.atmosphereOpacity;
+                    earth.atmosphereMaterial.wireframe = settings.atmosphereWireframe;
+
+                    earth.cloudsMesh.visible = settings.cloudsVisible;
+                    earth.cloudsMaterial.opacity = settings.cloudsOpacity;
+                    earth.cloudsMaterial.wireframe = settings.cloudsWireframe;
+
+                    earth.terrainMesh.visible = settings.terrainVisible;
+                    earth.terrainMaterial.bumpScale = settings.terrainBumpScale;
+                    earth.terrainMaterial.wireframe = settings.terrainWireframe;
+
+                    if (settings.cloudsRotate) {
+                        earth.cloudsMesh.rotation.y += settings.cloudsVelocity;
+                    }
+
+                    if (settings.terrainRotate) {
+                        earth.terrainMesh.rotation.y += settings.terrainVelocity;
+                    }
+
+                    if (!earth.isAddedToScene) {
+                        scene.add(earth.meshGroup);
+                        earth.isAddedToScene = true;
+                    }
+                }
+
+            }
+
+            camera.position.x += (mouseX - camera.position.x) * 0.005;
+            camera.position.y += (-mouseY - camera.position.y) * 0.005;
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+        }
+    };
