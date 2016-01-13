@@ -3,13 +3,13 @@
 var EarthWebGLDemo = EarthWebGLDemo || {};
 
 /**
- * URL parser, currently supports getting query string values by key.
+ * URL parser, currently supports getting query string values by key
  * @return {object} URL parser
  */
 EarthWebGLDemo.urlParser = {
 
     /**
-     * Get query string value by key.
+     * Get query string value by key
      * @param  {string} key
      * @return {string} value
      */
