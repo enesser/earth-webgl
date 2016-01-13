@@ -2,17 +2,15 @@
 
 require('babel-register');
 
-let express = require('express');
-let path = require('path');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let exphbs  = require('express-handlebars');
-
-let routes = require('./routes/index');
-
-let app = express();
+const express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    exphbs = require('express-handlebars'),
+    routes = require('./routes/index'),
+    app = express();
 
 let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
@@ -21,8 +19,8 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 // view engine setup
 
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main',
-  partialsDir: ['views/partials/']
+    defaultLayout: 'main',
+    partialsDir: ['views/partials/']
 }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
@@ -31,7 +29,7 @@ app.set('view engine', 'handlebars');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
