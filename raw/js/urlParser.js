@@ -1,7 +1,5 @@
 'use strict';
 
-/* global dat: true */
-
 var EarthWebGLDemo = EarthWebGLDemo || {};
 
 /**

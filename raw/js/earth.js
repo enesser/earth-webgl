@@ -1,5 +1,7 @@
 'use strict';
 
+/* global console, THREE: true */
+
 var EarthWebGLDemo = EarthWebGLDemo || {};
 
 /**
