@@ -3,17 +3,13 @@
 require('babel-register');
 
 const express = require('express'),
-    router = express.Router(),
-    projectSettings = require('../package.json');
+    router = express.Router();
 
 /* GET home page. */
 
 router.get('/', (req, res) => {
-    console.dir(projectSettings);
     res.render('index', {
-        title: 'Earth WebGL Demo',
-        description: projectSettings.description,
-        homepage: projectSettings.homepage
+        title: 'Earth WebGL Demo'
     });
 });
 
