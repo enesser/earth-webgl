@@ -14,12 +14,28 @@ const gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer');
 
+/**
+ * Process favicon
+ */
+gulp.task('favicon', () => {
+    return gulp.src('./raw/favicon.ico')
+        .pipe(gulp.dest('./public'))
+        .pipe(livereload());
+});
+
+/**
+ * Process 3D OBJ files including geometry and materials
+ */
 gulp.task('models', () => {
     return gulp.src('./raw/models/**')
         .pipe(gulp.dest('./public/models/'))
         .pipe(livereload());
 });
 
+
+/**
+ * Process Sass files
+ */
 gulp.task('sass', () => {
     return gulp.src('./raw/scss/**')
         .pipe(sass())
@@ -28,6 +44,9 @@ gulp.task('sass', () => {
         .pipe(livereload());
 });
 
+/**
+ * Process JavaScript files
+ */
 gulp.task('js', () => {
     return gulp.src('./raw/js/**')
         .pipe(sourcemaps.init())
@@ -40,12 +59,19 @@ gulp.task('js', () => {
         .pipe(livereload());
 });
 
+/**
+ * Watch task
+ */
 gulp.task('watch', () => {
     gulp.watch('./raw/models/**', ['models']);
     gulp.watch('./raw/scss/**', ['sass']);
     gulp.watch('./raw/js/**', ['js']);
+    gulp.watch('./raw/favicon.ico', ['favicon']);
 });
 
+/**
+ * Development mode
+ */
 gulp.task('develop', () => {
     livereload.listen();
     nodemon({
@@ -63,7 +89,11 @@ gulp.task('develop', () => {
     });
 });
 
+/**
+ * Default task
+ */
 gulp.task('default', [
+    'favicon',
     'models',
     'sass',
     'js',
