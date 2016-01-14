@@ -6,7 +6,7 @@
  * Entry point for Earth WebGL Demo
  * @param  {object} window
  */
-((window) => {
+((window, document) => {
     window.onload = () => {
 
         let scene,
@@ -74,7 +74,7 @@
 
             //allow the mouse to change the camera position when the user clicks and drags
             document.addEventListener('mousemove', (event) => {
-                if (event.buttons) {
+                if (event.target && event.target.tagName === "CANVAS" && event.buttons) {
                     mouseX = (event.clientX - windowHalfX) / 2;
                     mouseY = (event.clientY - windowHalfY) / 2;
                 }
@@ -148,4 +148,4 @@
             requestAnimationFrame(render);
         })();
     };
-})(window);
+})(window, document);
