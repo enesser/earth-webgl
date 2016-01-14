@@ -1,6 +1,8 @@
 'use strict';
 
-/* global window, console, THREE: true */
+/* global window, THREE: true */
+
+var EarthWebGLDemo = EarthWebGLDemo || {};
 
 /**
  * Entry point for Earth WebGL Demo
@@ -74,7 +76,7 @@
 
             //allow the mouse to change the camera position when the user clicks and drags
             document.addEventListener('mousemove', (event) => {
-                if (event.target && event.target.tagName === "CANVAS" && event.buttons) {
+                if (event.target && event.target.tagName === 'CANVAS' && event.buttons) {
                     mouseX = (event.clientX - windowHalfX) / 2;
                     mouseY = (event.clientY - windowHalfY) / 2;
                 }
