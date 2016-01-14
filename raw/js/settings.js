@@ -111,7 +111,13 @@ EarthWebGLDemo.settings = function() {
          * Speed of automatic terrain rotation (can be negative for backwards)
          * @type {Number}
          */
-        terrainVelocity = 0.001;
+        terrainVelocity = 0.001,
+
+        /**
+         * Project URL
+         * @type {String}
+         */
+        homepage = 'https://github.com/enesser/earth-webgl';
 
     let showUi = EarthWebGLDemo.urlParser.getQueryValueByKey('ui') !== 'false';
     let gui = null;
@@ -157,6 +163,13 @@ EarthWebGLDemo.settings = function() {
                     }
                 }
             }
+        },
+
+        /**
+         * Go to home page
+         */
+        homepage: function() {
+            window.open(homepage, '_blank');
         }
     };
 
@@ -190,6 +203,7 @@ EarthWebGLDemo.settings = function() {
         terrainFolder.add(settingsSchema, 'terrainRotate');
         terrainFolder.add(settingsSchema, 'terrainVelocity').min(-0.01).max(0.01);
 
+        gui.add(settingsSchema, 'homepage');
         gui.add(settingsSchema, 'reset');
     }
 

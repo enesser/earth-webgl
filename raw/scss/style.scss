@@ -1,11 +1,21 @@
 body {
     background-color: #000;
     color: #fff;
-    padding: 0px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     overflow: hidden;
+    padding: 0px;
+    position: relative;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.site-footer {
+    bottom: 0;
+    font-size: 1em;
+    padding: .4em;
+    position: fixed;
+    text-align: center;
+    width: 100%;
 }
