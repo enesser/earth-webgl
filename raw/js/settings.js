@@ -21,7 +21,7 @@ EarthWebGLDemo.settings = function() {
          * Default sun intensity
          * @type {Number}
          */
-        sunIntensity = 5,
+        sunIntensity = 3.4,
 
         /**
          * Default ambient light color
@@ -63,7 +63,7 @@ EarthWebGLDemo.settings = function() {
          * Clouds opacity
          * @type {Number}
          */
-        cloudsOpacity = 0.7,
+        cloudsOpacity = 0.9,
 
         /**
          * Show clouds wireframe
@@ -203,8 +203,8 @@ EarthWebGLDemo.settings = function() {
         terrainFolder.add(settingsSchema, 'terrainRotate');
         terrainFolder.add(settingsSchema, 'terrainVelocity').min(-0.01).max(0.01);
 
-        gui.add(settingsSchema, 'homepage');
         gui.add(settingsSchema, 'reset');
+        gui.add(settingsSchema, 'homepage');
     }
 
     settingsSchema.reset();
