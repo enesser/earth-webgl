@@ -4,10 +4,11 @@
   "description": "Photorealistic 3D earth and space scene demo rendered and animated in WebGL.",
   "private": false,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "gulp install"
   },
   "dependencies": {
-    "babel-register": "^6.3.13",
+    "babel-register": "^6.4.3",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.3",
@@ -25,7 +26,8 @@
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.6",
     "gulp-sass": "^2.1.1",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1"
   },
   "repository": {
     "type": "git",

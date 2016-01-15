@@ -100,3 +100,13 @@ gulp.task('default', [
     'develop',
     'watch'
 ]);
+
+/**
+ * Install task
+ */
+gulp.task('install', [
+    'favicon',
+    'models',
+    'sass',
+    'js'
+]);
