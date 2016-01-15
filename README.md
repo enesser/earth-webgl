@@ -76,7 +76,7 @@ I created this demo for an upcoming talk at [Designory](https://www.designory.co
 
 Topics:
 
-* 3D modeling
+* 3D modeling in Blender
 * UV mapping
 * bump maps
 * specular maps
