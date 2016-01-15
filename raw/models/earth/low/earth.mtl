@@ -32,5 +32,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 1
-map_Kd ./colormap.jpg
+map_Kd ./ColorMap.jpg
 map_Bump ./BumpMap.jpg
