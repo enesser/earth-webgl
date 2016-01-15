@@ -5,7 +5,7 @@ Earth WebGL Demo
 
 This animated demo includes a photorealistic 3D earth and space scene, rendered in WebGL with three.js and served with Express 4.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347746/60817756-bb26-11e5-80cc-57da009ce685.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347858/acb832ee-bb27-11e5-9cb4-eba3108fd405.png)
 
 ## Controls
 
