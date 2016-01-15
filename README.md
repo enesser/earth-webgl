@@ -103,6 +103,6 @@ Special thanks:
 * [NASA](http://visibleearth.nasa.gov/view_cat.php?categoryID=0) for source material for the model textures.
 
 ## License
-Copyright (c) 2014 Eric J Nesser, MIT
+Copyright (c) 2016 Eric J Nesser, MIT
 
 *Original source material for the model textures provided by NASA.*
