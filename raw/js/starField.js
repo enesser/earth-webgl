@@ -1,5 +1,7 @@
 'use strict';
 
+/* global THREE: true */
+
 var EarthWebGLDemo = EarthWebGLDemo || {};
 
 /**
@@ -33,4 +35,4 @@ EarthWebGLDemo.starField = function() {
     starFieldObject.stars = new THREE.Points(starGeometry, starMaterial);
 
     return starFieldObject;
-}
+};
