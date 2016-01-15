@@ -9,9 +9,9 @@ This animated demo includes a photorealistic 3D earth and space scene, rendered 
 
 ## Controls
 
-![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347832/4ad257d0-bb27-11e5-93b1-fcc9bfba6fd6.png)
-
 You can control the camera position by dragging the mouse and holding the right or left mouse button.
+
+![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347832/4ad257d0-bb27-11e5-93b1-fcc9bfba6fd6.png)
 
 Setting                 | Description
 ------------------------| ----------------------------
