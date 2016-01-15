@@ -9,7 +9,7 @@ This animated demo includes a photorealistic 3D earth and space scene, rendered 
 
 ## Controls
 
-![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347766/8fd7e80a-bb26-11e5-93da-ae4ec3ed2050.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347832/4ad257d0-bb27-11e5-93b1-fcc9bfba6fd6.png)
 
 Setting                 | Description
 ------------------------| ----------------------------
