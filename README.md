@@ -1,7 +1,9 @@
-Earth WebGL Demo
+﻿Earth WebGL Demo
 ==========
 
 **“Earth ‒ Where we keep all of our stuff.”**
+
+[![Build Status](https://travis-ci.org/enesser/earth-webgl.svg?branch=master)](https://travis-ci.org/enesser/earth-webgl.svg?branch=master)
 
 This animated demo includes a photorealistic 3D earth and space scene, rendered in WebGL with three.js and served with Express 4.
 
