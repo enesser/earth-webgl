@@ -1,6 +1,6 @@
 {
   "name": "earth-webgl",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Photorealistic 3D earth and space scene demo rendered and animated in WebGL.",
   "private": false,
   "scripts": {
