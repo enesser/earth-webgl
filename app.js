@@ -2,15 +2,16 @@
 
 require('babel-register');
 
-const express = require('express'),
-    path = require('path'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    exphbs = require('express-handlebars'),
-    routes = require('./routes/index'),
-    app = express();
+import express from 'express';
+import path from 'path';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import exphbs from 'express-handlebars';
+import routes from './routes/index';
+
+const app = express();
 
 let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;

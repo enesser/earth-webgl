@@ -1,9 +1,8 @@
 'use strict';
 
-require('babel-register');
+import express from 'express';
 
-const express = require('express'),
-    router = express.Router();
+const router = express.Router();
 
 /* GET home page. */
 
