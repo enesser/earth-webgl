@@ -7,7 +7,7 @@
 
 This animated demo includes a photorealistic 3D earth and space scene, rendered in WebGL with three.js and served with Express 4.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347858/acb832ee-bb27-11e5-9cb4-eba3108fd405.png)
+![3D Scene Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347858/acb832ee-bb27-11e5-9cb4-eba3108fd405.png)
 
 > Visit the live demo on CodePen: [http://codepen.io/enesser/full/pgWjoW/](http://codepen.io/enesser/full/pgWjoW/).
 
@@ -15,7 +15,7 @@ This animated demo includes a photorealistic 3D earth and space scene, rendered 
 
 ## Controls
 
-![Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347832/4ad257d0-bb27-11e5-93b1-fcc9bfba6fd6.png)
+![Controls Screenshot](https://cloud.githubusercontent.com/assets/5659221/12347832/4ad257d0-bb27-11e5-93b1-fcc9bfba6fd6.png)
 
 Setting                 | Description
 ------------------------| ----------------------------
@@ -38,6 +38,12 @@ Setting                 | Description
 **terrainVelocity**     | Speed of terrain rotation. Negative value rotates backwards.
 
 You can also control the camera position by dragging the mouse and holding the right or left mouse button.
+
+## Mobile
+
+This demo is supported on all modern mobile devices where WebGL is supported.
+
+![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604757/2ab9e056-c484-11e5-9a24-de68365ea4c5.png)
 
 ## Launch Options
 
