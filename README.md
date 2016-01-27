@@ -43,7 +43,7 @@ You can also control the camera position by dragging the mouse and holding the r
 
 This demo is supported on all modern mobile devices where WebGL is supported.
 
-![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604757/2ab9e056-c484-11e5-9a24-de68365ea4c5.png)
+![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604991/2cd8efd8-c486-11e5-9f71-8d48b9525997.png)
 
 ## Launch Options
 
