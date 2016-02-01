@@ -14,6 +14,7 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
         let scene,
             camera,
             renderer,
+            stereoEffect,
             directionalLightColor,
             directionalLight,
             ambientLightColor,
@@ -42,6 +43,11 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             });
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
+
+            //setup setereoscopic renderer effect
+            stereoEffect = new THREE.StereoEffect(renderer);
+            stereoEffect.eyeSeparation = 0;
+            stereoEffect.setSize(window.innerWidth, window.innerHeight);
 
             //add rendering div to the DOM
             let container = document.createElement('div');
@@ -89,6 +95,7 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
+                stereoEffect.setSize(window.innerWidth, window.innerHeight);
             }, false);
         })();
 
@@ -146,7 +153,8 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             }
 
             //render the scene and loop for next frame update
-            renderer.render(scene, camera);
+            //renderer.render(scene, camera);
+            stereoEffect.render(scene, camera);
             requestAnimationFrame(render);
         })();
     };
