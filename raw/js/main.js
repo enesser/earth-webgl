@@ -48,10 +48,10 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             //setup setereoscopic renderer effect
             if (vr) {
                 stereoEffect = new THREE.StereoEffect(renderer);
-                stereoEffect.eyeSeparation = 0;
+                stereoEffect.eyeSeparation = -0.4;
                 stereoEffect.setSize(window.innerWidth, window.innerHeight);
 
-                camera.position.set(2.71, 1.12, -0.19);
+                camera.position.set(2.71, 2.12, -0.19);
                 camera.lookAt(scene.position);
             }
 
