@@ -26,7 +26,8 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             mouseX = 0,
             mouseY = 0,
             windowHalfX = window.innerWidth / 2,
-            windowHalfY = window.innerHeight / 2;
+            windowHalfY = window.innerHeight / 2,
+            vr = EarthWebGLDemo.urlParser.getQueryValueByKey('vr') === 'true';
 
         /**
          * Initialize scene
@@ -45,9 +46,14 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             renderer.setSize(window.innerWidth, window.innerHeight);
 
             //setup setereoscopic renderer effect
-            stereoEffect = new THREE.StereoEffect(renderer);
-            stereoEffect.eyeSeparation = 0;
-            stereoEffect.setSize(window.innerWidth, window.innerHeight);
+            if (vr) {
+                stereoEffect = new THREE.StereoEffect(renderer);
+                stereoEffect.eyeSeparation = 0;
+                stereoEffect.setSize(window.innerWidth, window.innerHeight);
+
+                camera.position.set(2.71, 1.12, -0.19);
+                camera.lookAt(scene.position);
+            }
 
             //add rendering div to the DOM
             let container = document.createElement('div');
@@ -95,7 +101,10 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-                stereoEffect.setSize(window.innerWidth, window.innerHeight);
+
+                if (stereoEffect) {
+                    stereoEffect.setSize(window.innerWidth, window.innerHeight);
+                }
             }, false);
         })();
 
@@ -113,11 +122,13 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             ambientLightColor.setStyle(settings.ambientLight);
             ambientLight.color = ambientLightColor;
 
-            //update camera with mouse movements
-            camera.position.set(5.25, 0, 0);
-            camera.position.x += (mouseX - camera.position.x) * 0.005;
-            camera.position.y += (-mouseY - camera.position.y) * 0.005;
-            camera.lookAt(scene.position);
+            //update camera with mouse movements, but lock camera in vr mode
+            if (!vr) {
+                camera.position.set(5.25, 0, 0);
+                camera.position.x += (mouseX - camera.position.x) * 0.005;
+                camera.position.y += (-mouseY - camera.position.y) * 0.005;
+                camera.lookAt(scene.position);
+            }
 
             //when earth model is fully loaded (including materials and textures)
             if (earth.isLoaded) {
@@ -153,8 +164,12 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             }
 
             //render the scene and loop for next frame update
-            //renderer.render(scene, camera);
-            stereoEffect.render(scene, camera);
+            if (stereoEffect) {
+                stereoEffect.render(scene, camera);
+            } else {
+                renderer.render(scene, camera);
+            }
+
             requestAnimationFrame(render);
         })();
     };

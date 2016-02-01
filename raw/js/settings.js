@@ -119,7 +119,9 @@ EarthWebGLDemo.settings = function() {
          */
         homepage = 'https://github.com/enesser/earth-webgl';
 
-    let showUi = EarthWebGLDemo.urlParser.getQueryValueByKey('ui') !== 'false';
+    let showUi = EarthWebGLDemo.urlParser.getQueryValueByKey('ui') !== 'false' &&
+        EarthWebGLDemo.urlParser.getQueryValueByKey('vr') !== 'true';
+
     let gui = null;
 
     if (showUi) {
