@@ -18,7 +18,7 @@ const gulp = require('gulp'),
  * Process favicon
  */
 gulp.task('favicon', () => {
-    return gulp.src('./raw/favicon.ico')
+    return gulp.src('./raw/favicon*')
         .pipe(gulp.dest('./public'))
         .pipe(livereload());
 });
