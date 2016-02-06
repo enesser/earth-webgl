@@ -43,6 +43,10 @@ You can also control the camera position by dragging the mouse and holding the r
 
 This demo is supported on all modern mobile devices where WebGL is supported.
 
+## Virtual Reality
+
+![VR Screenshot](https://cloud.githubusercontent.com/assets/5659221/12870166/e462b916-ccfd-11e5-8e86-fe53e9135627.png)
+
 ![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604991/2cd8efd8-c486-11e5-9f71-8d48b9525997.png)
 
 ## Launch Options
