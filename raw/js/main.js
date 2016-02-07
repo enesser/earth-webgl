@@ -11,6 +11,9 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
 ((window, document) => {
     window.onload = () => {
 
+        const defaultEyeSeparation = -.04,
+            defaultFocalLength = 15;
+
         let scene,
             camera,
             renderer,
@@ -48,7 +51,8 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             //setup setereoscopic renderer effect
             if (vr) {
                 stereoEffect = new THREE.StereoEffect(renderer);
-                stereoEffect.eyeSeparation = -0.4;
+                stereoEffect.eyeSeparation = EarthWebGLDemo.urlParser.getQueryValueByKey('vr-eyeSeparation') || defaultEyeSeparation;
+                stereoEffect.focalLength =  EarthWebGLDemo.urlParser.getQueryValueByKey('vr-focalLength') || defaultFocalLength;
                 stereoEffect.setSize(window.innerWidth, window.innerHeight);
 
                 camera.position.set(2.71, 2.12, -0.19);
