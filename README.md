@@ -43,11 +43,16 @@ You can also control the camera position by dragging the mouse and holding the r
 
 This demo is supported on all modern mobile devices where WebGL is supported.
 
+![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604991/2cd8efd8-c486-11e5-9f71-8d48b9525997.png)
+
 ## Virtual Reality
 
-![VR Screenshot](https://cloud.githubusercontent.com/assets/5659221/12870166/e462b916-ccfd-11e5-8e86-fe53e9135627.png)
+Virtual reality mode can be toggled using the ``vr`` query string (**true**/**false**) documented under **Launch Options**. In VR mode,
+the camera is locked at a different perspective, the UI is hidden, and there are currently no controls.
 
-![Mobile Screenshot](https://cloud.githubusercontent.com/assets/5659221/12604991/2cd8efd8-c486-11e5-9f71-8d48b9525997.png)
+This mode is still highly experimental. Default values are calibrated for Google Cardboard but this demo can work with other HMDs like the Oculus Rift.
+
+![VR Screenshot](https://cloud.githubusercontent.com/assets/5659221/12870166/e462b916-ccfd-11e5-8e86-fe53e9135627.png)
 
 ## Launch Options
 
@@ -59,6 +64,11 @@ http://localhost:3000?quality=low
 UI can also be toggled using the ``ui`` query string (**true**/**false**):
 ```
 http://localhost:3000?ui=false
+```
+
+VR mode for virtual reality support can be toggled by using the ``vr`` query string (**true**/**false**):
+```
+http://localhost:3000?vr=true
 ```
 
 ## Installing
