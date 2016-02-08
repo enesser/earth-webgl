@@ -29,13 +29,15 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             mouseX = 0,
             mouseY = 0,
             windowHalfX = window.innerWidth / 2,
-            windowHalfY = window.innerHeight / 2,
-            vr = EarthWebGLDemo.urlParser.getQueryValueByKey('vr') === 'true';
+            windowHalfY = window.innerHeight / 2;
 
         /**
          * Initialize scene
          */
         (function init() {
+
+            //enable or disable virtual reality mode
+            let vr = EarthWebGLDemo.urlParser.getQueryValueByKey('vr') === 'true';
 
             //setup scene and perspective camera with a fov of 45, a near plane at 1, and a far plane at 1000
             scene = new THREE.Scene();
@@ -127,7 +129,7 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             ambientLight.color = ambientLightColor;
 
             //update camera with mouse movements, but lock camera in vr mode
-            if (!vr) {
+            if (!stereoEffect) {
                 camera.position.set(5.25, 0, 0);
                 camera.position.x += (mouseX - camera.position.x) * 0.005;
                 camera.position.y += (-mouseY - camera.position.y) * 0.005;
