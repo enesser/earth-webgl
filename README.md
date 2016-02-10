@@ -71,6 +71,12 @@ VR mode for virtual reality support can be toggled by using the ``vr`` query str
 http://localhost:3000?vr=true
 ```
 
+VR mode also supports optionally setting ``eyeSeparation`` and ``focalLength``:
+```
+http://localhost:3000?vr=true&vr-eyeSeparation=-.04
+http://localhost:3000?vr=true&vr-focalLength=15
+```
+
 ## Installing
 
 You’ll need [Node](https://nodejs.org/en/download/package-manager/) to get started.
