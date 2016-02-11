@@ -108,9 +108,9 @@ $ gulp                     # Run the demo in development mode w/ nodemon
 |-- views/                # handlebars templates for site pages
 ```
 
-## Intro to 3D on the Web
+## Intro to 3D &amp; VR on the Web
 
-I created this demo for an upcoming talk at [Designory](https://www.designory.com/): “Intro to 3D on the Web.”
+This demo was created for a talk I did at [Designory](https://www.designory.com/) in February 2016: “Intro to 3D &amp; VR on the Web.”
 
 Topics:
 
@@ -121,6 +121,7 @@ Topics:
 * composite materials
 * OBJ and three.js JSON exporting and importing
 * three.js camera, scene, lighting, and mesh basics
+* Stereoscopic rendering and virtual reality
 
 If you’re interested in this talk, please let me know.
 
