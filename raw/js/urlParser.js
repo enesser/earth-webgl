@@ -20,7 +20,7 @@ EarthWebGLDemo.urlParser = {
 
         for (let i = 0; i < vars.length; i++) {
             let pair = vars[i].split('=');
-            if (decodeURIComponent(pair[0]) == key) {
+            if (decodeURIComponent(pair[0]).toUpperCase() === key.toUpperCase()) {
                 return decodeURIComponent(pair[1]);
             }
         }
