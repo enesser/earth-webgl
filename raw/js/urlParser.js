@@ -15,6 +15,7 @@ EarthWebGLDemo.urlParser = {
      */
     getQueryValueByKey: (key) => {
 
+        //TODO: pass in url instead of accessing window.location directly
         let query = window.location.search.substring(1);
         let vars = query.split('&');
 
