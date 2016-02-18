@@ -119,8 +119,6 @@ EarthWebGLDemo.earth = function() {
 
                 //flag model as loaded after all adjustments
                 earthObject.isLoaded = true;
-
-                console.dir(o);
             },
 
             /**
