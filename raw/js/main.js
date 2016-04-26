@@ -11,7 +11,7 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
 ((window, document) => {
     window.onload = () => {
 
-        const defaultEyeSeparation = -.04,
+        const defaultEyeSeparation = -0.04,
             defaultFocalLength = 15;
 
         let scene,
@@ -93,12 +93,19 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             earth.isAddedToScene = false;
 
             //allow the mouse to change the camera position when the user clicks and drags
-            document.addEventListener('mousemove', (event) => {
-                if (event.target && event.target.tagName === 'CANVAS' && event.buttons) {
-                    mouseX = (event.clientX - windowHalfX) / 2;
-                    mouseY = (event.clientY - windowHalfY) / 2;
-                }
-            }, false);
+            if (!stereoEffect) {
+                document.addEventListener('mousemove', (event) => {
+                    if (event.target && event.target.tagName === 'CANVAS' && event.buttons) {
+                        mouseX = (event.clientX - windowHalfX) / 2;
+                        mouseY = (event.clientY - windowHalfY) / 2;
+                    }
+                }, false);
+            } else {
+                EarthWebGLDemo.accelerometer(window, document, (x, y) => {
+                    mouseX = x;
+                    mouseY = y;
+                });
+            }
 
             //update renderer and camera aspect to the new size of the drawing area on window resize
             window.addEventListener('resize', () => {
@@ -129,12 +136,12 @@ var EarthWebGLDemo = EarthWebGLDemo || {};
             ambientLight.color = ambientLightColor;
 
             //update camera with mouse movements, but lock camera in vr mode
-            if (!stereoEffect) {
+            //if (!stereoEffect) {
                 camera.position.set(5.25, 0, 0);
                 camera.position.x += (mouseX - camera.position.x) * 0.005;
                 camera.position.y += (-mouseY - camera.position.y) * 0.005;
                 camera.lookAt(scene.position);
-            }
+            //}
 
             //when earth model is fully loaded (including materials and textures)
             if (earth.isLoaded) {

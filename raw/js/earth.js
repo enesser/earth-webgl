@@ -96,7 +96,7 @@ EarthWebGLDemo.earth = function() {
 
         let loader = new THREE.OBJMTLLoader();
         loader.load(earthPath, earthMaterialPath, (o) => {
-
+            
                 //map imported object (OBJ) to our wrapper
                 earthObject.meshGroup = o;
                 earthObject.atmosphereMesh = o.children.filter(child => child.name === 'Atmosphere_Sphere.002')[0];
