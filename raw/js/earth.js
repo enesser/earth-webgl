@@ -99,11 +99,11 @@ EarthWebGLDemo.earth = function() {
             
                 //map imported object (OBJ) to our wrapper
                 earthObject.meshGroup = o;
-                earthObject.atmosphereMesh = o.children.filter(child => child.name === 'Atmosphere_Sphere.002')[0];
+                earthObject.atmosphereMesh = o.children.find(child => child.name === 'Atmosphere_Sphere.002');
                 earthObject.atmosphereMaterial = earthObject.atmosphereMesh.children[1].material;
-                earthObject.cloudsMesh = o.children.filter(child => child.name === 'Clouds_Sphere.001')[0];
+                earthObject.cloudsMesh = o.children.find(child => child.name === 'Clouds_Sphere.001');
                 earthObject.cloudsMaterial = earthObject.cloudsMesh.children[1].material;
-                earthObject.terrainMesh = o.children.filter(child => child.name === 'Earth_Sphere')[0];
+                earthObject.terrainMesh = o.children.find(child => child.name === 'Earth_Sphere');
                 earthObject.terrainMaterial = earthObject.terrainMesh.children[1].material;
 
                 //make adjustments to the imported model that were lost in the import process
