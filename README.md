@@ -131,7 +131,11 @@ Special thanks:
 * [Blender Guru](https://www.youtube.com/user/AndrewPPrice) for tips on creating a realistic 3D earth.
 * [NASA](http://visibleearth.nasa.gov/view_cat.php?categoryID=0) for source material for the model textures.
 
+## Donations
+
+BTC 18N1g2o1b9u2jNPbSpGHhV6x5xs6Qou3EV
+
 ## License
-Copyright (c) 2016 Eric J Nesser, MIT
+Copyright (c) 2016-2017 Eric J Nesser, MIT
 
 *Original source material for the model textures provided by NASA.*
